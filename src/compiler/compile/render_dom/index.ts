@@ -453,7 +453,12 @@ export default function dom(
 							@insert(options.target, this, options.anchor);
 						}
 
+						this.$$.slotted = {};
 						${(props.length > 0 || uses_props) && b`
+						for (const key in options.props.$$slots) {
+							this.$$.slotted[key] = options.props.$$slots[key][0]();
+							this.$$.slotted[key].c();
+						}
 						if (options.props) {
 							this.$set(options.props);
 							@flush();

@@ -401,7 +401,12 @@ export default class InlineComponentWrapper extends Wrapper {
 			}
 
 			block.chunks.mount.push(b`
-				if (${name}) {
+				if (component.compile_options.customElement) {
+					block.chunks.mount.push(
+						@insert(${parent_node || '#target'}, ${name}, ${parent_node ? 'null' : 'anchor'});
+					)
+				}
+				else if (${name}) {
 					@mount_component(${name}, ${parent_node || '#target'}, ${parent_node ? 'null' : 'anchor'});
 				}
 			`);
