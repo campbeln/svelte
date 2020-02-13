@@ -20,7 +20,7 @@ export default function dom(
 	block.has_outro_method = true;
 
 	// prevent fragment being created twice (#1063)
-	if (options.customElement) block.chunks.create.push(b`this.c = @noop;`);
+	//neek if (options.customElement) block.chunks.create.push(b`this.c = @noop;`);
 
 	const body = [];
 
@@ -453,7 +453,7 @@ export default function dom(
 							@insert(options.target, this, options.anchor);
 						}
 
-						this.$$.slotted = {};
+						this.$$.slotted = options.slots || {};
 						${(props.length > 0 || uses_props) && b`
 						for (const key in options.props.$$slots) {
 							this.$$.slotted[key] = options.props.$$slots[key][0]();

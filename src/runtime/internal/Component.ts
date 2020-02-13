@@ -176,6 +176,7 @@ if (typeof HTMLElement === 'function') {
 				// @ts-ignore todo: improve typings
 				//this.appendChild(this.$$.slotted[key]);
 				this.$$.slotted[key].m(this, null);
+				//this.appendChild(this.$$.slotted[key].m(this, null));
 			}
 		}
 
